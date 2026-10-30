@@ -37,3 +37,10 @@ Greedy wrapping minimizes line count; it does not minimize visual raggedness. Th
 - `wrapWords(words: string[], width: number): string[]`
 
 Output uses `\n` as the line separator regardless of platform.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
